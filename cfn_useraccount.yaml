@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: User Account Demo
+Parameters:
+  AccountName:
+    Type: String
+    Default: serviceaccount
+  EnvironmentName:
+    Type: String
+    Default: dev
+Resources:
+  ServiceAccount:
+    Type: AWS::IAM::User
+    Properties: 
+      UserName: !Ref AccountName
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/ReadOnlyAccess
+      Policies: 
+      - PolicyName: Cloudformation
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Resource: !Sub ${CloudformationRole.Arn}
+            Action:
+            - iam:PassRole            
+          - Effect: Allow
+            Resource: "*"
+            Action:
+            - cloudformation:CreateStack
+            Condition:
+              StringEquals:
+                aws:RequestTag/Environment: !Ref EnvironmentName
+          - Effect: Allow
+            Resource: "*"
+            Action:         
+            - cloudformation:DeleteStack
+            - cloudformation:UpdateStack
+            Condition:
+              StringEquals:
+                aws:ResourceTag/Environment: !Ref EnvironmentName
+          - Effect: Allow
+            Resource: "*"
+            Action:
+            - cloudformation:Describe*
+            - cloudformation:Detect*
+            - cloudformation:Get*
+            - cloudformation:List*
+            - cloudformation:EstimateTemplateCost
+            - cloudformation:ValidateTemplate
+
+  CloudformationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - cloudformation.amazonaws.com
+          Action: sts:AssumeRole
+      Policies:
+      - PolicyName: All
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Resource: "*"
+            Action: "*"
+Outputs:
+  ServiceAccount:
+    Description: IAM User Account
+    Value: !Ref ServiceAccount
+  CloudformationRole:
+    Description: Cloudformation Role
+    Value: !Sub ${CloudformationRole.Arn}
