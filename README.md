@@ -28,51 +28,51 @@ make set-account1-configuration
 ```
 
 ###### 2. Tests
-2a. Create a Cloudformation Stack using Account1. This should succeed.
+a. Create a Cloudformation Stack using Account1. This should succeed.
 ```bash
-    aws cloudformation create-stack \
-	--stack-name test-stack1 \
-	--template-body file://cfn_stack_1.yaml \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-	--tags Key=Environment,Value=USER_ENVIRONMENT_1 \
-	--role-arn $USER_ACCOUNT1_ROLE \
-	--profile user-account1-profile
+aws cloudformation create-stack \
+--stack-name test-stack1 \
+--template-body file://cfn_stack_1.yaml \
+--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+--tags Key=Environment,Value=USER_ENVIRONMENT_1 \
+--role-arn $USER_ACCOUNT1_ROLE \
+--profile user-account1-profile
 ```
 
-2b. Update a Cloudformation Stack created by Account1 with the Account1 User and Role. This should succeed.
+b. Update a Cloudformation Stack created by Account1 with the Account1 User and Role. This should succeed.
 ```bash
-    aws cloudformation update-stack \
-	--stack-name test-stack1 \
-	--template-body file://cfn_stack_2.yaml \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-	--role-arn $USER_ACCOUNT1_ROLE \
-	--profile user-account1-profile
+aws cloudformation update-stack \
+--stack-name test-stack1 \
+--template-body file://cfn_stack_2.yaml \
+--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+--role-arn $USER_ACCOUNT1_ROLE \
+--profile user-account1-profile
 ```
 
-2c. Attempt to update a Cloudformation Stack created by Account1 with the Account2 User and Role. This will fail.
+c. Attempt to update a Cloudformation Stack created by Account1 with the Account2 User and Role. This will fail.
 ```bash
-    aws cloudformation update-stack \
-	--stack-name test-stack1 \
-	--template-body file://cfn_stack_2.yaml \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-	--role-arn $USER_ACCOUNT2_ROLE \
-	--profile user-account2-profile
+aws cloudformation update-stack \
+--stack-name test-stack1 \
+--template-body file://cfn_stack_2.yaml \
+--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+--role-arn $USER_ACCOUNT2_ROLE \
+--profile user-account2-profile
 ```
 
-2d. Attempt to delete a Cloudformation Stack created by Account1 with the Account2 User and Role. This will fail.
+d. Attempt to delete a Cloudformation Stack created by Account1 with the Account2 User and Role. This will fail.
 ```bash
-	aws cloudformation delete-stack \
-	--stack-name test-stack1 \
-	--role-arn $USER_ACCOUNT2_ROLE \
-    --profile user-account2-profile
+aws cloudformation delete-stack \
+--stack-name test-stack1 \
+--role-arn $USER_ACCOUNT2_ROLE \
+--profile user-account2-profile
 ```
 
-2e. Delete the Cloudformation Stack created by Account1 with the Account1 User and Role.
+e. Delete the Cloudformation Stack created by Account1 with the Account1 User and Role.
 ```bash
-    aws cloudformation delete-stack \
-    --stack-name test-stack1 \
-    --role-arn $USER_ACCOUNT1_ROLE \
-    --profile user-account1-profile
+aws cloudformation delete-stack \
+--stack-name test-stack1 \
+--role-arn $USER_ACCOUNT1_ROLE \
+--profile user-account1-profile
 ```
 
 ##### 3. Cleanup 
@@ -81,10 +81,6 @@ a. Create our IAM Users Accounts
 delete-account1-stack
 delete-account2-stack 
 ```
-b. Set Configuration for AWS CLI profiles
-```bash
-make set-account1-configuration
-make s
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
