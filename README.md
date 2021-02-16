@@ -1,9 +1,7 @@
 # aws-cloudformation-tagging-permissions-example
+This project demonstrates the capabilities made available with this [AWS announcement](https://aws.amazon.com/about-aws/whats-new/2019/05/announcing-tag-based-access-control-for-aws-cloudformation/). It is an example of how to use tags on AWS Cloudformation stacks in conjunction with IAM Policy permissions to manage AWS resource creation.
 
-This project is an example of how to use tags on AWS Cloudformation stacks in conjunction with IAM Policy permissions to manage access of AWS resources.
-
-This project demonstrates the capabilities made available with this AWS announcement:
-  https://aws.amazon.com/about-aws/whats-new/2019/05/announcing-tag-based-access-control-for-aws-cloudformation/
+This project uses a vscode devcontainer environment. More information on setup can be found [here](https://code.visualstudio.com/docs/remote/containers).
 
 # Usage
 ### Assumptions 
