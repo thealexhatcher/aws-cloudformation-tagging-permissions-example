@@ -75,7 +75,16 @@ make set-account1-configuration
     --profile user-account1-profile
 ```
 
-### Clean Up
+##### 3. Cleanup 
+a. Create our IAM Users Accounts
+```bash
+delete-account1-stack
+delete-account2-stack 
+```
+b. Set Configuration for AWS CLI profiles
+```bash
+make set-account1-configuration
+make s
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
