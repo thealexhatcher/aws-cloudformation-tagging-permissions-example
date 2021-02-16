@@ -1,12 +1,8 @@
 {
-	"name": "Python",
+	"name": "aws-cloudformation-tagging-permissions-example",
 	"dockerFile": "Dockerfile",
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	"remoteUser": "vscode",
-	//"postCreateCommand": "",
-	"extensions": [
-		"ms-python.python"
-	]
 }
