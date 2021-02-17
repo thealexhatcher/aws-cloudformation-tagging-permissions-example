@@ -1,5 +1,6 @@
 # aws-cloudformation-tagging-permissions-example
-This project demonstrates the capabilities made available with this [AWS announcement](https://aws.amazon.com/about-aws/whats-new/2019/05/announcing-tag-based-access-control-for-aws-cloudformation/). It is an example of how to use tags on AWS Cloudformation stacks in conjunction with IAM Policy permissions to manage AWS resource creation.
+
+This project demonstrates the capabilities made available with the [AWS announcement](https://aws.amazon.com/about-aws/whats-new/2019/05/announcing-tag-based-access-control-for-aws-cloudformation/) that IAM Policies will support conditions with AWS Cloudformation tagging. It is an example of how to use tags on AWS Cloudformation stacks in conjunction with IAM Policy permissions to manage AWS resource creation.
 
 ## Usage
 
