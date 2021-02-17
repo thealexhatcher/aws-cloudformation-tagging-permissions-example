@@ -7,7 +7,7 @@ create-account1-stack:
 	--template-file cfn_useraccount.yaml \
 	--parameter-overrides AccountName=useraccount1 EnvironmentName=USER_ENVIRONMENT_1 \
 	--no-fail-on-empty-changeset \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND 
+	--capabilities CAPABILITY_NAMED_IAM 
 delete-account1-stack:
 	aws cloudformation delete-stack --stack-name test-useraccount1
 set-account1-configuration:
@@ -20,7 +20,7 @@ create-account2-stack:
 	--template-file cfn_useraccount.yaml \
 	--parameter-overrides AccountName=useraccount2 EnvironmentName=USER_ENVIRONMENT_2 \
 	--no-fail-on-empty-changeset \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND 
+	--capabilities CAPABILITY_NAMED_IAM 
 delete-account2-stack:
 	aws cloudformation delete-stack --stack-name test-useraccount2
 set-account2-configuration:
@@ -33,7 +33,7 @@ create-test-stack:
 	--stack-name test-stack \
 	--role-arn $$ROLE \
 	--template-body file://cfn_stack_1.yaml \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+	--capabilities CAPABILITY_NAMED_IAM \
 	--tags Key=Environment,Value=USER_ENVIRONMENT_1 \
 	--profile useraccount1-profile
 	@echo "Waiting for stack to be created ..." 
@@ -45,7 +45,7 @@ update-test-stack:
 	--stack-name test-stack \
 	--role-arn $$ROLE \
 	--template-body file://cfn_stack_2.yaml \
-	--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+	--capabilities CAPABILITY_NAMED_IAM \
 	--profile useraccount1-profile
 	@echo "Waiting for stack to be updated ..."
 	aws cloudformation wait stack-update-complete \

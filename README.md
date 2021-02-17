@@ -50,7 +50,7 @@ a. Create a Cloudformation Stack using useraccount1. This will succeed.
 aws cloudformation create-stack \
   --stack-name test-stack1 \
   --template-body file://cfn_stack_1.yaml \
-  --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+  --capabilities CAPABILITY_NAMED_IAM \
   --tags Key=Environment,Value=USER_ENVIRONMENT_1 \
   --role-arn $USER_ACCOUNT1_ROLE \
   --profile useraccount1-profile
@@ -61,7 +61,7 @@ b. Update a Cloudformation Stack created by useraccount1 with the useraccount1 U
 aws cloudformation update-stack \
   --stack-name test-stack1 \
   --template-body file://cfn_stack_2.yaml \
-  --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+  --capabilities CAPABILITY_NAMED_IAM \
   --role-arn $USER_ACCOUNT1_ROLE \
   --profile useraccount1-profile
 ```
@@ -71,7 +71,7 @@ c. Attempt to update a Cloudformation Stack created by useraccount1 with the use
 aws cloudformation update-stack \
   --stack-name test-stack1 \
   --template-body file://cfn_stack_1.yaml \
-  --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+  --capabilities CAPABILITY_NAMED_IAM \
   --role-arn $USER_ACCOUNT2_ROLE \
   --profile useraccount2-profile
 ```
