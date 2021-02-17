@@ -1,7 +1,7 @@
 # aws-cloudformation-tagging-permissions-example
 This project demonstrates the capabilities made available with this [AWS announcement](https://aws.amazon.com/about-aws/whats-new/2019/05/announcing-tag-based-access-control-for-aws-cloudformation/). It is an example of how to use tags on AWS Cloudformation stacks in conjunction with IAM Policy permissions to manage AWS resource creation.
 
-# Usage
+## Usage
 
 This project uses a vscode devcontainer environment. More information on setup can be found [here](https://code.visualstudio.com/docs/remote/containers).
 
@@ -12,6 +12,8 @@ This project uses a vscode devcontainer environment. More information on setup c
 3. You have obtained [AWS Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for your IAM account or role
 4. You are running this is example in the vscode devcontainer environment
 5. You have [configured the aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config) to use your AWS Access Key and Secret Key.
+
+### Execution
 
 #### 1. Setup 
 
@@ -87,7 +89,7 @@ aws cloudformation delete-stack \
 
 #### 3. Cleanup 
 
-a. Remove our IAM Users Accounts and associated roles
+Remove our IAM Users Accounts and associated roles
 ```bash
 delete-account1-stack
 delete-account2-stack 
