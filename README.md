@@ -23,7 +23,7 @@ create-account2-stack
 ```
 
 b. Set Configuration for AWS CLI profiles
-Get AWS Access and Secret keys for each userAccount1 and Account2 and configure aws cli profiles for each.
+Get AWS Access and Secret keys for each useraccount1 and useraccount2 and configure aws cli profiles for each.
 ```bash
 make set-account1-configuration
 make set-account1-configuration
@@ -43,9 +43,9 @@ USER_ACCOUNT2_ROLE=$(aws cloudformation describe-stacks \
 
 #### 2. Execution
 
-IAM User Account userAccount1 that we created is only able to create and modifty stacks that are tagged with Environment=USER_ENVIRONMENT_1 and can only pass its associated role to cloudformation for creating resournces. Account2 can only create and modify stacks that are tagged with Environment=USER_ENVIRONMENT_2 and can also only pass its associated role. For userAccount1 and Account2, resources can only be created through Cloudformation. Provisioning User Accounts or ( or federated roles ) in this way  allows for a scheme to partition 
+IAM User Account useraccount1 that we created is only able to create and modifty stacks that are tagged with Environment=USER_ENVIRONMENT_1 and can only pass its associated role to cloudformation for creating resournces. useraccount2 can only create and modify stacks that are tagged with Environment=USER_ENVIRONMENT_2 and can also only pass its associated role. For useraccount1 and useraccount2, resources can only be created through Cloudformation. Provisioning User Accounts or ( or federated roles ) in this way  allows for a scheme to partition 
 
-a. Create a Cloudformation Stack using userAccount1. This will succeed.
+a. Create a Cloudformation Stack using useraccount1. This will succeed.
 ```bash
 aws cloudformation create-stack \
   --stack-name test-stack1 \
@@ -56,7 +56,7 @@ aws cloudformation create-stack \
   --profile user-account1-profile
 ```
 
-b. Update a Cloudformation Stack created by userAccount1 with the userAccount1 User and Role. This will succeed.
+b. Update a Cloudformation Stack created by useraccount1 with the useraccount1 User and Role. This will succeed.
 ```bash
 aws cloudformation update-stack \
   --stack-name test-stack1 \
@@ -66,7 +66,7 @@ aws cloudformation update-stack \
   --profile user-account1-profile
 ```
 
-c. Attempt to update a Cloudformation Stack created by userAccount1 with the Account2 User and Role. This will fail.
+c. Attempt to update a Cloudformation Stack created by useraccount1 with the useraccount2 User and Role. This will fail.
 ```bash
 aws cloudformation update-stack \
   --stack-name test-stack1 \
@@ -76,7 +76,7 @@ aws cloudformation update-stack \
   --profile user-account2-profile
 ```
 
-d. Attempt to delete a Cloudformation Stack created by userAccount1 with the Account2 User and Role. This will fail.
+d. Attempt to delete a Cloudformation Stack created by useraccount1 with the useraccount2 User and Role. This will fail.
 ```bash
 aws cloudformation delete-stack \
   --stack-name test-stack1 \
@@ -84,7 +84,7 @@ aws cloudformation delete-stack \
   --profile user-account2-profile
 ```
 
-e. Delete the Cloudformation Stack created by userAccount1 with the userAccount1 User and Role. This will fail.
+e. Delete the Cloudformation Stack created by useraccount1 with the useraccount1 User and Role. This will fail.
 ```bash
 aws cloudformation delete-stack \
   --stack-name test-stack1 \
