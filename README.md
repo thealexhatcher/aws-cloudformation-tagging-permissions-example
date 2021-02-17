@@ -8,7 +8,7 @@ This project uses a vscode devcontainer environment. More information on setup c
 
 1. You have an AWS Account 
 2. You have an IAM User Account or Role with permissions to create the required IAM User Account and IAM Role for AWS Cloudformation actions.
-3. You have obtained [AWS Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for your IAM account or role
+3. You have obtained [AWS Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for your IAM User Account or Role
 4. You are running this is example in the vscode devcontainer environment
 5. You have [configured the aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config) to use your AWS Access Key and Secret Key.
 
