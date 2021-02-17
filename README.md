@@ -43,7 +43,7 @@ USER_ACCOUNT2_ROLE=$(aws cloudformation describe-stacks \
 
 #### 2. Execution
 
-IAM User Account useraccount1 that we created is only able to create and modifty stacks that are tagged with Environment=USER_ENVIRONMENT_1 and can only pass its associated role to cloudformation for creating resournces. useraccount2 can only create and modify stacks that are tagged with Environment=USER_ENVIRONMENT_2 and can also only pass its associated role. For useraccount1 and useraccount2, resources can only be created through Cloudformation. Provisioning User Accounts ( or federated roles ) in this way  allows for a scheme to partition 
+IAM User "useraccount1" that we created is only able to create and modifty stacks that are tagged with Environment=USER_ENVIRONMENT_1 and can only pass its associated role to cloudformation for creating resources. IAM User "useraccount2" can only create and modify stacks that are tagged with Environment=USER_ENVIRONMENT_2 and can also only pass its associated role. For IAM User useraccount1 and useraccount2, resources can only be created through Cloudformation. Provisioning IAM Users ( or federated IAM Roles ) in this way allows for a scheme to partition AWS resource creation within a single AWS Account. 
 
 a. Create a Cloudformation Stack using useraccount1. This will succeed.
 ```bash
