@@ -53,7 +53,7 @@ aws cloudformation create-stack \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --tags Key=Environment,Value=USER_ENVIRONMENT_1 \
   --role-arn $USER_ACCOUNT1_ROLE \
-  --profile user-account1-profile
+  --profile useraccount1-profile
 ```
 
 b. Update a Cloudformation Stack created by useraccount1 with the useraccount1 User and Role. This will succeed.
@@ -63,7 +63,7 @@ aws cloudformation update-stack \
   --template-body file://cfn_stack_2.yaml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --role-arn $USER_ACCOUNT1_ROLE \
-  --profile user-account1-profile
+  --profile useraccount1-profile
 ```
 
 c. Attempt to update a Cloudformation Stack created by useraccount1 with the useraccount2 User and Role. This will fail.
@@ -73,7 +73,7 @@ aws cloudformation update-stack \
   --template-body file://cfn_stack_1.yaml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --role-arn $USER_ACCOUNT2_ROLE \
-  --profile user-account2-profile
+  --profile useraccount2-profile
 ```
 
 d. Attempt to delete a Cloudformation Stack created by useraccount1 with the useraccount2 User and Role. This will fail.
@@ -81,7 +81,7 @@ d. Attempt to delete a Cloudformation Stack created by useraccount1 with the use
 aws cloudformation delete-stack \
   --stack-name test-stack1 \
   --role-arn $USER_ACCOUNT2_ROLE \
-  --profile user-account2-profile
+  --profile useraccount2-profile
 ```
 
 e. Delete the Cloudformation Stack created by useraccount1 with the useraccount1 User and Role. This will fail.
@@ -89,7 +89,7 @@ e. Delete the Cloudformation Stack created by useraccount1 with the useraccount1
 aws cloudformation delete-stack \
   --stack-name test-stack1 \
   --role-arn $USER_ACCOUNT1_ROLE \
-  --profile user-account1-profile
+  --profile useraccount1-profile
 ```
 
 #### 3. Cleanup 
