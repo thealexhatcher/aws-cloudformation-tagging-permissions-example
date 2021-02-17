@@ -70,7 +70,7 @@ c. Attempt to update a Cloudformation Stack created by userAccount1 with the Acc
 ```bash
 aws cloudformation update-stack \
   --stack-name test-stack1 \
-  --template-body file://cfn_stack_2.yaml \
+  --template-body file://cfn_stack_1.yaml \
   --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
   --role-arn $USER_ACCOUNT2_ROLE \
   --profile user-account2-profile
